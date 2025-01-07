@@ -1,23 +1,51 @@
-# 1. Choose a base image for Node (e.g., Node 20)
-FROM node:20
+# Stage 1: Build the Strapi Admin Panel
+FROM node:20-alpine AS build
 
-# 2. Set the working directory
-WORKDIR /app
+# Install dependencies required for building
+RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git bash
 
-# 3. Copy package.json and package-lock.json first for Docker caching
+# Set environment variables
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+# Set working directory
+WORKDIR /opt/app
+
+# Copy package files and install dependencies
 COPY package.json package-lock.json ./
+RUN npm install --only=production
 
-# 4. Install dependencies using npm
-RUN npm install
-
-# 5. Copy the rest of your Strapi project files
+# Copy the rest of the application code
 COPY . .
 
-# 6. Build the Strapi admin panel
+# Build the Strapi admin panel
 RUN npm run build
 
-# 7. Expose Strapi's default port
+# Stage 2: Create the production image
+FROM node:20-alpine
+
+# Install runtime dependencies
+RUN apk add --no-cache vips-dev
+
+# Set environment variables
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+# Set working directory
+WORKDIR /opt/app
+
+# Copy node_modules and built admin panel from the build stage
+COPY --from=build /opt/app/node_modules ./node_modules
+COPY --from=build /opt/app ./
+
+# Ensure proper permissions
+RUN chown -R node:node /opt/app
+
+# Switch to non-root user
+USER node
+
+# Expose Strapi's default port
 EXPOSE 1337
 
-# 8. Start Strapi
+# Start Strapi in production mode
 CMD ["npm", "run", "start"]
