@@ -11,6 +11,19 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedPonudba extends Struct.ComponentSchema {
+  collectionName: 'components_shared_ponudbas';
+  info: {
+    displayName: 'Ponudba';
+    icon: 'restaurant';
+  };
+  attributes: {
+    Cena: Schema.Attribute.String;
+    Ime: Schema.Attribute.String;
+    Opis: Schema.Attribute.String;
+  };
+}
+
 export interface SharedQuote extends Struct.ComponentSchema {
   collectionName: 'components_shared_quotes';
   info: {
@@ -66,6 +79,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.media': SharedMedia;
+      'shared.ponudba': SharedPonudba;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;

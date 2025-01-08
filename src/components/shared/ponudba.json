@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_ponudbas",
+  "info": {
+    "displayName": "Ponudba",
+    "icon": "restaurant"
+  },
+  "options": {},
+  "attributes": {
+    "Ime": {
+      "type": "string"
+    },
+    "Opis": {
+      "type": "string"
+    },
+    "Cena": {
+      "type": "string"
+    }
+  }
+}

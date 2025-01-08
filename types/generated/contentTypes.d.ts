@@ -554,12 +554,6 @@ export interface ApiTedenskaPonudbaTedenskaPonudba
     };
   };
   attributes: {
-    Cena: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -575,24 +569,18 @@ export interface ApiTedenskaPonudbaTedenskaPonudba
           localized: true;
         };
       }>;
-    Ime: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::tedenska-ponudba.tedenska-ponudba'
     >;
-    Opis: Schema.Attribute.String &
+    publishedAt: Schema.Attribute.DateTime;
+    tedenskaPonudba: Schema.Attribute.Component<'shared.ponudba', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

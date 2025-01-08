@@ -32,29 +32,16 @@
       },
       "type": "date"
     },
-    "Ime": {
+    "tedenskaPonudba": {
+      "displayName": "Ponudba",
+      "type": "component",
+      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string"
-    },
-    "Opis": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "Cena": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
+      "component": "shared.ponudba"
     }
   }
 }
