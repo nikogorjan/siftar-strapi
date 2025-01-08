@@ -462,6 +462,10 @@ export interface ApiKategorijaKategorija extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::kategorija.kategorija'
     >;
+    malice: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tedenska-ponudba.tedenska-ponudba'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -511,6 +515,68 @@ export interface ApiPonudbaPonudba extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::ponudba.ponudba'
+    >;
+    Opis: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTedenskaPonudbaTedenskaPonudba
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tedenska_ponudbas';
+  info: {
+    displayName: 'Tedenska ponudba';
+    pluralName: 'tedenska-ponudbas';
+    singularName: 'tedenska-ponudba';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Cena: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dan: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Datum: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Ime: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tedenska-ponudba.tedenska-ponudba'
     >;
     Opis: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1038,6 +1104,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::kategorija.kategorija': ApiKategorijaKategorija;
       'api::ponudba.ponudba': ApiPonudbaPonudba;
+      'api::tedenska-ponudba.tedenska-ponudba': ApiTedenskaPonudbaTedenskaPonudba;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -36,6 +36,11 @@
         }
       },
       "type": "biginteger"
+    },
+    "malice": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tedenska-ponudba.tedenska-ponudba"
     }
   }
 }
