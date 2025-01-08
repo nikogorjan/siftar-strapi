@@ -56,7 +56,7 @@
       },
       "type": "string"
     },
-    "jeTedenskiMeni": {
+    "jeTedenskaPonudba": {
       "pluginOptions": {
         "i18n": {
           "localized": true

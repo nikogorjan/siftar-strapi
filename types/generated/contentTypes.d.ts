@@ -574,7 +574,7 @@ export interface ApiTedenskaPonudbaTedenskaPonudba
           localized: true;
         };
       }>;
-    jeTedenskiMeni: Schema.Attribute.Boolean &
+    jeTedenskaPonudba: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
