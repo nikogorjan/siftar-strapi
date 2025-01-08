@@ -55,15 +55,6 @@
         }
       },
       "type": "string"
-    },
-    "jeTedenskaPonudba": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "boolean",
-      "default": false
     }
   }
 }

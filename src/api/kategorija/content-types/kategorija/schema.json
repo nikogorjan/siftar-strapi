@@ -41,6 +41,15 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tedenska-ponudba.tedenska-ponudba"
+    },
+    "jeTedenskaPonudba": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false
     }
   }
 }
