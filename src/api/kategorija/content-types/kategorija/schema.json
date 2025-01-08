@@ -28,6 +28,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::ponudba.ponudba"
+    },
+    "Zaporedje": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "biginteger"
     }
   }
 }
