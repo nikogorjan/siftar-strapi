@@ -4,7 +4,8 @@
   "info": {
     "singularName": "tedenska-ponudba",
     "pluralName": "tedenska-ponudbas",
-    "displayName": "Tedenska ponudba"
+    "displayName": "Tedenska ponudba",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -54,6 +55,15 @@
         }
       },
       "type": "string"
+    },
+    "jeTedenskiMeni": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false
     }
   }
 }

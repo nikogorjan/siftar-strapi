@@ -533,6 +533,7 @@ export interface ApiTedenskaPonudbaTedenskaPonudba
   extends Struct.CollectionTypeSchema {
   collectionName: 'tedenska_ponudbas';
   info: {
+    description: '';
     displayName: 'Tedenska ponudba';
     pluralName: 'tedenska-ponudbas';
     singularName: 'tedenska-ponudba';
@@ -573,6 +574,13 @@ export interface ApiTedenskaPonudbaTedenskaPonudba
           localized: true;
         };
       }>;
+    jeTedenskiMeni: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
